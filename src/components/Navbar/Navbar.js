@@ -1,12 +1,10 @@
 import React from "react";
 import { Search, LogOut, Film } from "lucide-react";
 import "./navbar.css";
-import {useNavigate} from 'react-router-dom';
-import PrivateBooking from "./private_booking/PrivateBooking";
-import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  
   return (
     <nav className="navbar">
       <div className="navbar-1">
