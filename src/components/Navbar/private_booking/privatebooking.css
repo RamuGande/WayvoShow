@@ -1,0 +1,281 @@
+.booking-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  .booking-container {
+    flex: 1;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    
+    
+  }
+  .booking-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .booking-header h1 {
+    font-size: 2.5rem;
+    color: black;
+    margin-bottom: 0.5rem;
+  }
+  
+  .booking-header p {
+    font-size: 1.1rem;
+    color: rgb(23, 17, 17);
+  }
+  
+  .booking-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 30px;
+  }
+  
+  .booking-form {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .form-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+    color: #00baf2;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #00baf2;
+    outline: none;
+    box-shadow: 0 0 0 1px #00baf2;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 1em;
+  }
+  
+  .form-group.half {
+    flex: 1;
+    margin: 10px;
+    
+  }
+ 
+  .price-calculator {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .price-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .price-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #00baf2;
+    margin-right: 0.5rem;
+  }
+  
+  .price-header h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .price-details {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+  }
+  
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .price-row.total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #ddd;
+  }
+  
+  .availability-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .check-availability-btn {
+    background-color: #00baf2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+  }
+  
+  .check-availability-btn:hover {
+    border: 2px solid #00baf2;
+    background-color: white;
+    color: #00baf2;
+    
+  }
+  
+  .check-availability-btn:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+  }
+  
+  .availability-status {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  
+  .availability-status.available {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+  
+  .availability-status.unavailable {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+  
+  .status-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+  }
+  
+  .submit-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+  }
+  
+  .submit-btn:hover {
+    background-color: #dc2626;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #fca5a5;
+    cursor: not-allowed;
+  }
+  
+  .booking-info {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .booking-info h2 {
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+  }
+  
+  .booking-info p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .info-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-section h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-section ul {
+    list-style-type: none;
+    padding-left: 0.5rem;
+  }
+  
+  .info-section li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .info-section li::before {
+    content: "•";
+    color: #ef4444;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .booking-content {
+      flex-direction: row;
+    }
+    
+    .booking-form {
+      flex: 3;
+    }
+    
+    .booking-info {
+      flex: 2;
+    }
+  }

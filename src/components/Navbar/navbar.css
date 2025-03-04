@@ -1,0 +1,146 @@
+/* Navbar Styles */
+*{
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+    background-color:#00baf2;
+    color: #ffffff;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .navbar-1 {
+    
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .first_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  
+  .first_sub_container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    width: 500px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  
+  .search_bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search_bar input {
+    background-color: white;
+    border-radius: 9999px;
+    padding: 16px;
+    width: 200%;
+    font-size: medium;
+    max-width: 400px;
+    color: black;
+    border: none;
+  }
+  .search_and_input{
+    width: 100%;
+  }
+  
+  .search_bar input:focus {
+    outline: none;
+    border: none;
+
+  }
+  
+  .search_bar input::placeholder {
+    color: black;
+  }  
+  .search {
+    position: absolute;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00baf2;
+  }
+  
+  .search svg {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  
+  /* Logout button */
+  .first_container > div:last-child {
+    display: flex;
+    align-items: center;
+  }
+  
+  .first_container > div:last-child button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: white;
+    color: #00baf2;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .first_container > div:last-child button:hover {
+    transform: scale(1.1);
+  }
+  
+ 
+  .border-t {
+    border-top: 1px solid white;
+  }
+  
+  .nav_items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 16px;
+    
+    
+  }
+  
+  .navbar-1 a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .navbar-1 a:hover {
+    color: #00baf2;
+    background-color: white;
+    border-radius: 30px;
+    padding: 12px;
+  }
+  
