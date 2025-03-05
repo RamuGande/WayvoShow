@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './Multi.css';
+im[ort]
 
 import { FaStar } from 'react-icons/fa';
 
