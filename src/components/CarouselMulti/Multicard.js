@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './Multi.css';
-im[ort]
+import {useNavigate} from 'react-router-dom';
+
 
 import { FaStar } from 'react-icons/fa';
 
 function Multicard() {
   const [movies, setMovies] = useState([]);
+
+  const navigate = useNavigate();
+
+  const handleMovieClick=(id)=>{
+    navigate(`/movies/${id}`);
+  }
 
   const responsive = {
     superLargeDesktop: {
@@ -40,7 +47,7 @@ function Multicard() {
       <h1 className="slider-title">Recommended</h1>
       <Carousel responsive={responsive}>
         {movies.map((movie) => (
-          <div className="carousel-item" key={movie.id}>
+          <div className="carousel-item" key={movie.id} onClick={() => handleMovieClick(movie.id)}>
             <img src={movie.image_url} alt={movie.title} />
             
             <div className="button-group">
@@ -63,7 +70,7 @@ function Multicard() {
       <h1 className="slider-title">Upcoming</h1>
       <Carousel responsive={responsive}>
         {movies.map((movie) => (
-          <div className="carousel-item" key={movie.id}>
+          <div className="carousel-item" key={movie.id} onClick={()=>handleMovieClick(movie.id)}>
             <img src={movie.image_url} alt={movie.title} />
             
             <div className="button-group">
