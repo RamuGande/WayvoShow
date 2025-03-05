@@ -1,6 +1,6 @@
 import "./App.css";
 import PrivateBooking from "./components/Navbar/private_booking/PrivateBooking";
-
+import LoginSignup from "./components/LoginSignUp/LoginSignup";
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,9 +18,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        
+        <Route path="/Login_Signup" element={<LoginSignup />} />
         <Route path="/PrivateBooking" element={<PrivateBooking />} />
-        
       </Routes>
     </BrowserRouter>
     

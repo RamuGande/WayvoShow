@@ -1,9 +1,40 @@
 import React, { useState } from 'react';
 import { Building2, Mail, Lock, User, ArrowRight } from 'lucide-react';
 import './LoginSignup.css';
+import axios from 'axios';
 
 function LoginSignup() {
   const [activeTab, setActiveTab] = useState('login');
+  
+  // Login state
+  const [username, setusername] = useState('');
+  const [password, setpassword] = useState('');
+
+  // Signup state
+  const [signUpName, setSignUpName] = useState('');
+  const [signUpEmail, setSignUpEmail] = useState('');
+  const [signUpPassword, setSignUpPassword] = useState('');
+  const [signUpConfirmPassword, setSignUpConfirmPassword] = useState('');
+
+  const login = (e) => {
+    e.preventDefault();
+    axios.post(`${process.env.REACT_APP_API_URL}/login`, { username, password })
+      .then(response => console.log(response.data))
+      .catch(error => console.error(error.response ? error.response.data : error.message));
+  };
+
+  const signup = (e) => {
+    console.log("Hello");
+    e.preventDefault();
+    axios.post(`${process.env.REACT_APP_API_URL}/signup_user`, { 
+      username: signUpName, 
+      email: signUpEmail, 
+      password: signUpPassword, 
+      cnfpassword: signUpConfirmPassword 
+    })
+      .then(response => console.log(response.data))
+      .catch(error => console.error(error.response ? error.response.data : error.message));
+  };
 
   return (
     <div className="app-container">
@@ -11,7 +42,7 @@ function LoginSignup() {
         {/* Logo Section */}
         <div className="logo-section">
           <div className="logo-container">
-          <img src={require('../assets/images/log.png')} alt="img" />
+            <img src={require('../../assets/images/log.png')} alt="img" />
           </div>
           <p className="logo-description">
             Your gateway to seamless digital experiences. Join us today and unlock a world of possibilities.
@@ -50,7 +81,6 @@ function LoginSignup() {
               <div className="form-section">
                 <h2 className="form-title">Welcome back</h2>
                 <p className="form-subtitle">Please enter your details to sign in</p>
-                
                 <div className="form-fields">
                   <div className="form-group">
                     <label htmlFor="email" className="form-label">Email</label>
@@ -59,6 +89,8 @@ function LoginSignup() {
                         <Mail size={18} />
                       </div>
                       <input
+                        value={username}
+                        onChange={(e) => setusername(e.target.value)}
                         type="email"
                         id="email"
                         className="form-input"
@@ -66,7 +98,6 @@ function LoginSignup() {
                       />
                     </div>
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="password" className="form-label">Password</label>
                     <div className="input-container">
@@ -74,6 +105,8 @@ function LoginSignup() {
                         <Lock size={18} />
                       </div>
                       <input
+                        value={password}
+                        onChange={(e) => setpassword(e.target.value)}
                         type="password"
                         id="password"
                         className="form-input"
@@ -81,7 +114,6 @@ function LoginSignup() {
                       />
                     </div>
                   </div>
-                  
                   <div className="form-footer">
                     <div className="form-checkbox-container">
                       <input
@@ -94,15 +126,13 @@ function LoginSignup() {
                         Remember me
                       </label>
                     </div>
-                    
                     <div>
                       <a href="#" className="form-link">
                         Forgot password?
                       </a>
                     </div>
                   </div>
-                  
-                  <button type="submit" className="submit-button">
+                  <button onClick={login} type="submit" className="submit-button">
                     <span>Sign in</span>
                     <ArrowRight size={18} className="button-icon" />
                   </button>
@@ -112,7 +142,6 @@ function LoginSignup() {
               <div className="form-section">
                 <h2 className="form-title">Create account</h2>
                 <p className="form-subtitle">Please fill in your details to get started</p>
-                
                 <div className="form-fields">
                   <div className="form-group">
                     <label htmlFor="name" className="form-label">Full Name</label>
@@ -125,10 +154,11 @@ function LoginSignup() {
                         id="name"
                         className="form-input"
                         placeholder="Enter your name"
+                        value={signUpName}
+                        onChange={(e) => setSignUpName(e.target.value)}
                       />
                     </div>
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="signup-email" className="form-label">Email</label>
                     <div className="input-container">
@@ -140,10 +170,11 @@ function LoginSignup() {
                         id="signup-email"
                         className="form-input"
                         placeholder="Enter your email"
+                        value={signUpEmail}
+                        onChange={(e) => setSignUpEmail(e.target.value)}
                       />
                     </div>
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="signup-password" className="form-label">Password</label>
                     <div className="input-container">
@@ -155,10 +186,27 @@ function LoginSignup() {
                         id="signup-password"
                         className="form-input"
                         placeholder="Create a password"
+                        value={signUpPassword}
+                        onChange={(e) => setSignUpPassword(e.target.value)}
                       />
                     </div>
                   </div>
-                  
+                  <div className="form-group">
+                    <label htmlFor="confirm-password" className="form-label">Confirm Password</label>
+                    <div className="input-container">
+                      <div className="input-icon">
+                        <Lock size={18} />
+                      </div>
+                      <input
+                        type="password"
+                        id="confirm-password"
+                        className="form-input"
+                        placeholder="Confirm your password"
+                        value={signUpConfirmPassword}
+                        onChange={(e) => setSignUpConfirmPassword(e.target.value)}
+                      />
+                    </div>
+                  </div>
                   <div className="form-checkbox-container">
                     <input
                       id="terms"
@@ -170,8 +218,7 @@ function LoginSignup() {
                       I agree to the <a href="#" className="form-link">Terms</a> and <a href="#" className="form-link">Privacy Policy</a>
                     </label>
                   </div>
-                  
-                  <button type="submit" className="submit-button">
+                  <button onClick={signup} type="submit" className="submit-button">
                     <span>Create account</span>
                     <ArrowRight size={18} className="button-icon" />
                   </button>
@@ -187,7 +234,6 @@ function LoginSignup() {
                   <span>Or continue with</span>
                 </div>
               </div>
-              
               <div className="social-buttons">
                 <button type="button" className="social-button">
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -197,7 +243,6 @@ function LoginSignup() {
                     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                   </svg>
                 </button>
-                
                 <button type="button" className="social-button">
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
