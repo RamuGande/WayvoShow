@@ -1,0 +1,34 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "First Slide",
+      "image_url": "https://assets-in.bmscdn.com/promotions/cms/creatives/1740655920858_1stmarch2025oscartitlesweb.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Second Slide",
+      "image_url": "https://assets-in.bmscdn.com/promotions/cms/creatives/1740643926755_nevenkaredlorryfestdesktopcarousel.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Third Slide",
+      "image_url": "https://assets-in.bmscdn.com/promotions/cms/creatives/1726036566435_playcardnewweb.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Fourth Slide",
+      "image_url": "https://assets-in.bmscdn.com/promotions/cms/creatives/1740982999036_3rdmarbrazilvsindialegendscreative4desktopcarousel.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Fifth Slide",
+      "image_url": "https://assets-in.bmscdn.com/promotions/cms/creatives/1740737011875_cheemanweb.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Sixth Slide",
+      "image_url": "https://assets-in.bmscdn.com/promotions/cms/creatives/1740735403758_1stmarindianhistoryredlorrydesktopcarousel.jpg"
+    }
+  ]
+}

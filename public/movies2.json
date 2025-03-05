@@ -1,0 +1,86 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Chhaava",
+      "image_url": "/Assets/img11.PNG",
+      "rating": 4.5,
+      "votes": 100,
+      "type": "Action/Drama"
+    },
+    {
+      "id": 2,
+      "title": "Mazaka",
+      "image_url": "/Assets/img22.jpg",
+      "rating": 4.0,
+      "votes": 200,
+      "type": "Comedy/Family"
+    },
+    {
+      "id": 3,
+      "title": "Return Of The Dragon",
+      "image_url": "/Assets/img33.jpg",
+      "rating": 4.7,
+      "votes": 150,
+      "type": "Comedy/Drama"
+    },
+    {
+      "id": 4,
+      "title": "Shabdham",
+      "image_url": "/Assets/img44.jpg",
+      "rating": 4.2,
+      "votes": 120,
+      "type": "Horror/Thriller"
+    },
+    {
+      "id": 5,
+      "title": "Chhaava Telugu",
+      "image_url": "/Assets/img55.jpg",
+      "rating": 3.9,
+      "votes": 50,
+      "type": "Action/Drama"
+    },
+    {
+      "id": 6,
+      "title": "Craxxy",
+      "image_url": "/Assets/img66.PNG",
+      "rating": 4.3,
+      "votes": 80,
+      "type": "Thriller/Drama"
+    },
+    {
+      "id": 7,
+      "title": "Aghathiya",
+      "image_url": "/Assets/img77.jpg",
+      "rating": 4.6,
+      "votes": 140,
+      "type": "Action/Thriller"
+    },
+    {
+      "id": 8,
+      "title": "Superboys of Malegaon",
+      "image_url": "/Assets/img88.jpg",
+      "rating": 3.8,
+      "votes": 60,
+      "type": "Biography/Drama"
+    },
+    {
+      "id": 9,
+      "title": "Sankrantiki Vastunnam",
+      "image_url": "/Assets/img99.jpg",
+      "rating": 4.1,
+      "votes": 180,
+      "type": "Comedy/Drama"
+    },
+    {
+      "id": 10,
+      "title": "Thandel",
+      "image_url": "/Assets/img0.jpg",
+      "rating": 4.4,
+      "votes": 90,
+      "type": "Love/Drama"
+    }
+  ]
+}
+
+

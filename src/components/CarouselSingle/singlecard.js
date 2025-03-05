@@ -5,51 +5,42 @@ import "slick-carousel/slick/slick-theme.css";
 import './singlecard.css'; 
 
 const SingleCardSlider = () => {
+    const [movies, setMovies] = useState([]);
     const [sliderRef, setSliderRef] = useState(null);
 
-   
     const settings = {
-      infinite: true, 
-      speed: 500,     
-      slidesToShow: 1,  
-      slidesToScroll: 1, 
-      autoplay: true,   
-      autoplaySpeed: 2000, 
-      arrows: true,     
-      dots: true,       
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: true,
+        dots: true,
     };
-  
-    // To ensure the slider is set after initial mount
+
     useEffect(() => {
-      if (!sliderRef) return;
-      sliderRef.slickPlay(); // Start autoplay when component is mounted
+        
+        fetch("\movies.json")
+            .then(response => response.json())
+            .then(data => setMovies(data.movies))
+            .catch(error => console.error('Error fetching the JSON data:', error));
+
+        if (!sliderRef) return;
+        sliderRef.slickPlay();
     }, [sliderRef]);
-  
+
     return (
-      <div className="slider-container">
-        <Slider {...settings} ref={setSliderRef}>
-          <div className="slider-item">
-            <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1740655920858_1stmarch2025oscartitlesweb.jpg" alt="First Slide" />
-          </div>
-          <div className="slider-item">
-            <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1740643926755_nevenkaredlorryfestdesktopcarousel.jpg" alt="Second Slide" />
-          </div>
-          <div className="slider-item">
-            <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1726036566435_playcardnewweb.jpg" alt="Third Slide" />
-          </div>
-          <div className="slider-item">
-            <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1740982999036_3rdmarbrazilvsindialegendscreative4desktopcarousel.jpg" alt="Third Slide" />
-          </div>
-          <div className="slider-item">
-            <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1740737011875_cheemanweb.jpg" alt="Third Slide" />
-          </div>
-          <div className="slider-item">
-            <img src="https://assets-in.bmscdn.com/promotions/cms/creatives/1740735403758_1stmarindianhistoryredlorrydesktopcarousel.jpg" alt="Third Slide" />
-          </div>
-          
-        </Slider>
-      </div>
+        <div className="slider-container">
+            <Slider {...settings} ref={setSliderRef}>
+                {movies.map((movie) => (
+                    <div className="slider-item" key={movie.id}>
+                        <img src={movie.image_url} alt={movie.title} />
+                    </div>
+                ))}
+            </Slider>
+        </div>
     );
-  };
+};
 
 export default SingleCardSlider;
