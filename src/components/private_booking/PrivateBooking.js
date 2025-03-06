@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, MapPin, Users, DollarSign, CheckCircle } from 'lucide-react';
 import './privatebooking.css';
-import Navbar from '../../Navbar/Navbar';
-import Footer from '../../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 
 
 const PrivateBooking = () => {

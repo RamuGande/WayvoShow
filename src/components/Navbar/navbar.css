@@ -9,6 +9,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
+    height: 130px;
   }
   .navbar-1 {
     
@@ -20,15 +21,16 @@
   .first_container {
     display: flex;
     justify-content: space-between;
-    padding: 16px;
+    /* padding: 16px; */
+    height: 70px;
   }
   
   .first_sub_container {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 10px;
-    margin-bottom: 1rem;
+    /* padding: 10px; */
+    /* margin-bottom: 1rem; */
     justify-content: space-between;
     width: 500px;
   }
@@ -119,7 +121,7 @@
     border-top: 1px solid white;
   }
   
-  .nav_items {
+  /* .nav_items {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,5 +144,43 @@
     background-color: white;
     border-radius: 30px;
     padding: 12px;
-  }
-  
+  } */
+  /* ... (previous CSS remains the same until nav_items) ... */
+
+.nav_items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 16px;
+}
+
+.navbar-1 a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  position: relative; /* Added for underline effect */
+  transition: all 0.3s ease; /* Smooth transition for all changes */
+}
+
+.navbar-1 a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: white;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.navbar-1 a:hover {
+  color: white;
+  transform: scale(1.1); /* Zoom effect */
+}
+
+.navbar-1 a:hover::after {
+  width: 100%; /* Full width underline on hover */
+}

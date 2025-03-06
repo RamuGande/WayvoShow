@@ -1,0 +1,105 @@
+/* Movie.css */
+.mov-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    margin: 0;
+    background: #00baf2;
+    font-family: 'Arial', sans-serif;
+    height: fit-content;
+  }
+  
+  .mov-logo {
+    /* flex: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px; */
+  }
+  
+  .mov-logo-img {
+    /* max-width: 300%; */
+    max-height: 300%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 200px;
+  }
+  
+  .mov-form-wrapper {
+    flex: 3;
+    padding: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    height: 645px;
+  }
+  
+  .mov-title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 600;
+  }
+  
+  .mov-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .mov-label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  
+  .mov-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+  }
+  
+  .mov-input:focus {
+    border-color: #66ccff;
+    outline: none;
+  }
+  
+  .mov-submit-btn {
+    width: 100%;
+    padding: 12px 20px;
+    background: #66ccff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+  }
+  
+  .mov-submit-btn:hover {
+    background: #4ba8e1;
+  }
+  
+  @media (max-width: 768px) {
+    .mov-container {
+      flex-direction: column;
+    }
+  
+    .mov-logo-img {
+      max-height: 250px;
+    }
+  
+    .mov-form-wrapper {
+      width: 90%;
+      margin-top: 20px;
+    }
+  }

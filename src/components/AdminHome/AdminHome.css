@@ -1,0 +1,29 @@
+.admin-home {
+    padding: 20px;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    background: linear-gradient(to bottom right, #eef2ff, #e0f2fe);
+    height: 100vh;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .add-vendor-button {
+    background-color: #00baf2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    
+  }
+  
+  .add-vendor-button:hover {
+    background-color: #00baf2;
+  }
