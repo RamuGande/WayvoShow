@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Building2, Mail, Lock, User2, ArrowRight } from 'lucide-react';
-import './Admin.css';
+import { User2, ArrowRight } from 'lucide-react';
+import '../Admin/Admin.css';
 
-function Admin() {
+function Vender() {
 
   return (
     <div className="app-container">
@@ -12,7 +12,6 @@ function Admin() {
           <div className="logo-container">
           <img src={require('../../assets/images/log.png')} alt="img" />
           </div>
-          
           <p className="logo-description">
             Your gateway to seamless digital experiences. Join us today and unlock a world of possibilities.
           </p>
@@ -30,17 +29,15 @@ function Admin() {
           {/* Form Container */}
           <div className="form-container">
               <div className="form-section">
-                <User2 style={{ width: '80px', height: '80px', marginLeft:'40%', marginBottom:'20px' }} />
-                <h1 className="form-title">Admin Login</h1>
+              <User2 style={{ width: '80px', height: '80px', marginLeft:'40%', marginBottom:'20px' }} />
+                <h1 className="form-title">Theater owner Login</h1>
                 <p className="form-subtitle">Please enter your details to sign in</p>
                 
                 <div className="form-fields">
                   <div className="form-group">
                     <label htmlFor="email" className="form-label">Email</label>
                     <div className="input-container">
-                      {/* <div className="input-icon">
-                        <Mail size={18} />
-                      </div> */}
+                      
                       <input
                         type="email"
                         id="email"
@@ -53,9 +50,7 @@ function Admin() {
                   <div className="form-group">
                     <label htmlFor="password" className="form-label">Password</label>
                     <div className="input-container">
-                      {/* <div className="input-icon">
-                        <Lock size={18} />
-                      </div> */}
+                     
                       <input
                         type="password"
                         id="password"
@@ -88,4 +83,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default Vender;

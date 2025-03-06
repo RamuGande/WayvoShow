@@ -1,0 +1,105 @@
+
+.bookings-container {
+    background-color: #f0f8ff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 10px;
+  }
+  
+
+  .toggle-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+  }
+  
+  .toggle-btn:hover {
+    background-color: #0056b3;
+  }
+  
+ 
+  .bookings-list {
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  
+  .booking-card {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .booking-image {
+    width: 80px;
+    height: 110px;
+    border-radius: 5px;
+    margin-right: 15px;
+  }
+  
+  
+  .booking-info {
+    flex-grow: 1;
+  }
+  
+  .booking-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .booking-language {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .booking-date,
+  .booking-venue,
+  .booking-ticket {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  
+  .booking-status {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  
+  .finished {
+    background-color: #ccc;
+    color: black;
+  }
+  
+  .upcoming {
+    background-color: #28a745;
+    color: white;
+  }
