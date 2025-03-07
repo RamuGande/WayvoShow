@@ -1,9 +1,8 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
-import Carousel from 'react-multi-carousel';
+// import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 
 import SingleCardSlider from '../CarouselSingle/singlecard';
 
@@ -16,6 +15,7 @@ const Home = () => {
     <div >
       
       <Navbar/>
+      <p style={{fontSize:'larger', marginLeft:'20px'}}> 🎬🍿Book your show now.. Now you can book your own private show for your friends and family👨‍👩‍👧‍👦</p>
     <SingleCardSlider />
     <Multicard/>
     

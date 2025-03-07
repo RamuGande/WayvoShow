@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, LogOut, Film } from "lucide-react";
+import { Search, LogOut } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
@@ -15,8 +15,7 @@ const Navbar = () => {
       <div className="navbar-1">
         <div className="first_container">
           <div className="logo">
-            <Film className="h-8 w-8" style={{ color: "#ef4444" }} />
-            <span className="title">CinemaHub</span>
+          <img style={{height:'250px', width:'300px'}}  src={require('../../assets/images/mainlogo.png')} alt="img" />
           </div>
           <div className="first_sub_container">
             <div className="search_and_input">

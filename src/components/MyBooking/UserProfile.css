@@ -1,6 +1,7 @@
 
 .profile-container {
-  max-width: 800px;
+  /* max-width: 800px; */
+  width: 60%;
   margin: 2rem auto;
   padding: 2rem;
   background: white;
@@ -167,7 +168,7 @@
 .info-item input:focus {
   outline: none;
   border-color: #3b82f6;
-  ring: 2px solid #3b82f6;
+  /* ring: 2px solid #3b82f6; */
 }
 
 /* Responsive Design */
@@ -199,3 +200,53 @@
 
 
 
+/* Additional Mobile Optimizations */
+@media (max-width: 650px) {
+  .profile-container {
+    width: 80%;
+    margin: 0.5rem auto;
+    padding: 10px;
+  }
+
+  .info-group {
+    gap: 1rem;
+  }
+
+  .info-item label {
+    font-size: 0.813rem;
+  }
+
+  .info-item p {
+    font-size: 0.938rem;
+  }
+}
+@media (max-width: 480px) {
+  .profile-container {
+    width: 80%;
+    margin: 0.5rem auto;
+    padding: 10px;
+  }
+
+  .info-group {
+    gap: 1rem;
+  }
+
+  .info-item label {
+    font-size: 0.813rem;
+  }
+
+  .info-item p {
+    font-size: 0.938rem;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .edit-btn, .save-btn, .cancel-btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .info-item input {
+    font-size: 16px; /* Prevents iOS zoom on input focus */
+  }
+}
