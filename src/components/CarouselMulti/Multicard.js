@@ -45,14 +45,14 @@ function Multicard() {
   return (
     <div className="carousel-container">
       <h1 className="slider-title">Recommended</h1>
-      <Carousel responsive={responsive}>
+      <Carousel className='cardbo' responsive={responsive}>
         {movies.map((movie) => (
           <div className="carousel-item" key={movie.id} onClick={() => handleMovieClick(movie.id)}>
             <img src={movie.image_url} alt={movie.title} />
             
             <div className="button-group">
               <button className="rating-button">
-                <FaStar /> Rating: {movie.rating}
+                ⭐Rating: {movie.rating}
               </button>
               <button className="votes-button">
                 {movie.votes} Votes
@@ -68,14 +68,14 @@ function Multicard() {
 
       {/* Second Carousel container */}
       <h1 className="slider-title">Upcoming</h1>
-      <Carousel responsive={responsive}>
+      <Carousel className='cardbo' responsive={responsive}>
         {movies.map((movie) => (
           <div className="carousel-item" key={movie.id} onClick={()=>handleMovieClick(movie.id)}>
             <img src={movie.image_url} alt={movie.title} />
             
             <div className="button-group">
               <button className="rating-button">
-                <FaStar /> Rating: {movie.rating}
+              ⭐Rating: {movie.rating}
               </button>
               <button className="votes-button">
                 {movie.votes} Votes

@@ -1,5 +1,5 @@
-react-multi-carousel
-react-slick 
+react-multi-carousel --save
+react-slick --save
 react-icons
 slick-carousel
 axios
