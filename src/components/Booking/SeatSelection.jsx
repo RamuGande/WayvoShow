@@ -13,7 +13,7 @@ const SeatSelection = () => {
         console.log('showId from useParams:', showId);
     }, [showId]);
 
-    const booked = useCallback(async (showId) => {
+    const booked = useCallback(async () => {
         if (!showId) {
             console.warn('showId is undefined');
             return;
@@ -36,21 +36,21 @@ const SeatSelection = () => {
                 return;
             }
             const data = await result.json();
-            const seatNumbers = data.map(seat => seat.seat_number); // Extract only seat numbers
+            const seatNumbers = data.map(seat => seat.seat_number);
             setSeatsBooked(seatNumbers);
             console.log('Fetched booked seat numbers:', seatNumbers);
         } catch (error) {
             console.error('Error fetching booked seats:', error);
         }
-    }, []);
+    }, [showId]);
 
     useEffect(() => {
         if (showId) {
-            booked(showId);
+            booked();
         }
 
         return () => {
-            setSeatsBooked([]); // Cleanup to avoid memory leaks
+            setSeatsBooked([]);
         };
     }, [showId, booked]);
 
@@ -60,6 +60,33 @@ const SeatSelection = () => {
                 ? prev.filter(seat => seat !== seatId)
                 : [...prev, seatId]
         );
+    };
+
+    const handlePurchase = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.error('No token found in localStorage');
+                return;
+            }
+            const result = await fetch(`${process.env.REACT_APP_API_URL}/seats/book_seats`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+body: JSON.stringify({ seats: selectedSeats, show_id: showId }) // Use show_id instead of show_Id
+            });
+            if (!result.ok) {
+                console.error('Failed to book seats:', result.status);
+                return;
+            }
+            console.log('Seats booked successfully');
+            setSelectedSeats([]);
+            booked();
+        } catch (error) {
+            console.error('Error booking seats:', error);
+        }
     };
 
     const handleSubmit = (e) => {
@@ -96,7 +123,8 @@ const SeatSelection = () => {
                 </div>
             </div>
             <button
-                type="submit"
+                onClick={handlePurchase}
+                type="button"
                 className="confirm-button"
                 disabled={selectedSeats.length === 0}
             >
