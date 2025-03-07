@@ -1,5 +1,5 @@
-npm install react-multi-carousel 
-npm install react-slick 
+react-multi-carousel
+react-slick 
 react-icons
 slick-carousel
 axios
