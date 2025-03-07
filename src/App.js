@@ -16,6 +16,7 @@ import MovieDetails from "./components/Booking/Moviedetails";
 import AdminHome from "./components/AdminHome/AdminHome";
 import VenderHome from "./components/VenderHome/MovieForm";
 import UserProfile from "./components/MyBooking/UserProfile";
+import SeatSelection from "./components/Booking/SeatSelection";
 function App() {
   return (
     <BrowserRouter>
@@ -30,8 +31,8 @@ function App() {
         <Route path="/adminhome" element={<AdminHome />} />
         <Route path="/venderhome" element={<VenderHome />} />
         <Route path="/profile" element={<UserProfile />} />
-
-      </Routes>
+        <Route path="/seats/:showId" element={<SeatSelection />} />
+        </Routes>
     </BrowserRouter>
      
     

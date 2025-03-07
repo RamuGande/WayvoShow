@@ -1,0 +1,80 @@
+CREATE DATABASE IF NOT EXISTS shows;
+USE shows;
+
+CREATE TABLE user (
+  user_id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  user_type ENUM('customer','theater_owner') NOT NULL,
+  PRIMARY KEY (user_id),
+  UNIQUE KEY username (username)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE theater (
+  theater_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  location VARCHAR(100) NOT NULL,
+  owner_id INT DEFAULT NULL,
+  PRIMARY KEY (theater_id),
+  KEY owner_id (owner_id),
+  CONSTRAINT theater_ibfk_1 FOREIGN KEY (owner_id) REFERENCES user (user_id)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE show_table (
+  show_id VARCHAR(20) NOT NULL,
+  theater_id INT DEFAULT NULL,
+  movie_name VARCHAR(100) NOT NULL,
+  show_date DATE DEFAULT NULL,
+  show_time TIME DEFAULT NULL,
+  Language VARCHAR(200) DEFAULT NULL,
+  Movie_Type VARCHAR(200) DEFAULT NULL,
+  PRIMARY KEY (show_id),
+  KEY theater_id (theater_id),
+  CONSTRAINT show_table_ibfk_1 FOREIGN KEY (theater_id) REFERENCES theater (theater_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE seat (
+  seat_id INT NOT NULL AUTO_INCREMENT,
+  show_id VARCHAR(20) DEFAULT NULL,
+  seat_number VARCHAR(10) NOT NULL,
+  status ENUM('available','booked','blocked') NOT NULL,
+  PRIMARY KEY (seat_id),
+  KEY show_id (show_id),
+  CONSTRAINT seat_ibfk_1 FOREIGN KEY (show_id) REFERENCES show_table (show_id)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE booking (
+  booking_id INT NOT NULL AUTO_INCREMENT,
+  user_id INT DEFAULT NULL,
+  show_id VARCHAR(20) DEFAULT NULL,
+  seat_id INT DEFAULT NULL,
+  booking_time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (booking_id),
+  KEY user_id (user_id),
+  KEY show_id (show_id),
+  KEY seat_id (seat_id),
+  CONSTRAINT booking_ibfk_1 FOREIGN KEY (user_id) REFERENCES user (user_id),
+  CONSTRAINT booking_ibfk_2 FOREIGN KEY (show_id) REFERENCES show_table (show_id),
+  CONSTRAINT booking_ibfk_3 FOREIGN KEY (seat_id) REFERENCES seat (seat_id)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Insert sample data
+INSERT INTO user (username, password, user_type) VALUES
+('customer1', 'pass123', 'customer'),
+('owner1', 'pass123', 'theater_owner');
+
+INSERT INTO theater (name, location, owner_id) VALUES
+('Cineplex 1', 'Downtown', 2),
+('Grand Cinema', 'Uptown', 2);
+
+INSERT INTO show_table (show_id, theater_id, movie_name, show_date, show_time, Language, Movie_Type) VALUES
+('S001', 1, 'Inception', '2025-03-10', '18:00:00', 'English', 'Sci-Fi'),
+('S002', 2, 'Interstellar', '2025-03-11', '20:00:00', 'English', 'Adventure');
+
+INSERT INTO seat (show_id, seat_number, status) VALUES
+('S001', 'A1', 'available'),
+('S001', 'A2', 'booked'),
+('S002', 'B1', 'available');
+
+INSERT INTO booking (user_id, show_id, seat_id) VALUES
+(1, 'S001', 2);

@@ -9,11 +9,13 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
-
+const Seats = require("./Seats")
+app.use("/seats", Seats)
 const vendorRouter = require('./Vendors');
 app.use('/Vendors', vendorRouter);
-
-// Helper function to execute database queries
+const Theater = require("./Theater_Generation")
+app.use("/Theater_generation", Theater)
+    // Helper function to execute database queries
 const execute_query = async(query, params) => {
     return new Promise((resolve, reject) => {
         db.query(query, params, (error, results) => {
