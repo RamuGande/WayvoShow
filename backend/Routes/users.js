@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const db = require('../Middleware/Database');
 const app = express();
 const PORT = process.env.PORT || 5000;
-
+const Auth = require('../Middleware/Authentication')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -27,18 +27,20 @@ const execute_query = async(query, params) => {
 
 app.post('/login', async(req, res) => {
     const { username, password } = req.body;
-    const query = "SELECT username, password FROM user WHERE username = ?";
+    const query = "SELECT username, password,user_type FROM user WHERE username = ?";
 
     try {
         const results = await execute_query(query, [username]);
+
         if (results.length === 0) return res.status(401).send("Check your username or password");
 
         const hashedPassword = results[0].password;
+        const role = results[0].user_type
         const isMatch = await bcrypt.compare(password, hashedPassword);
 
         if (!isMatch) return res.status(401).send("Check your username or password");
-
-        res.status(200).send("Logged In");
+        const token = Auth.createToken(username, password, role);
+        res.status(200).send(token);
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal server error");
