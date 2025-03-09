@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Movie.css';
-
+import axios from "axios";
 const MovieForm = () => {
   const [formData, setFormData] = useState({
     movieName: '',
     releaseDate: '',
+    time: '',
     movieImage: '',
     ticketPrice: '',
     language: '',
-    movieType: '',
     city: '',
     theatre: ''
   });
+
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+
+  useEffect(() => {
+        fetch('/movies2.json')
+            .then(response => response.json())
+            .then(data => setMovies(data.movies))
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +29,13 @@ const MovieForm = () => {
       ...prevState,
       [name]: value
     }));
+
+    if (name === 'movieName' && Array.isArray(movies)) {
+      const filtered = movies.filter(movie => 
+        movie.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredMovies(filtered);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -30,13 +47,25 @@ const MovieForm = () => {
     setFormData({
       movieName: '',
       releaseDate: '',
+      time: '',
       movieImage: '',
       ticketPrice: '',
       language: '',
-      movieType: '',
       city: '',
       theatre: ''
     });
+    try{
+  const result =axios.post(`${process.env.REACT_APP_API_URL}/vendors/add_show`, { formData },
+   { Authorization:{
+      Bearer:'token'
+    }}
+  )
+    }
+    catch(error)
+    {
+      console.log(error);
+    }
+    setFilteredMovies([]);
   };
 
   return (
@@ -48,13 +77,30 @@ const MovieForm = () => {
       <div className="mov-form-wrapper">
         <h2 className="mov-title">Submit Movie Details</h2>
         <form onSubmit={handleSubmit} className="movie-form">
-          {[ 
-            { label: 'Movie Name', name: 'movieName', type: 'text' },
+          <div className="mov-form-group">
+            <label className="mov-label">Movie Name:</label>
+            <input
+              className="mov-input"
+              type="text"
+              name="movieName"
+              value={formData.movieName}
+              onChange={handleChange}
+              list="movie-options"
+              required
+            />
+            <datalist id="movie-options">
+              {filteredMovies.map((movie, index) => (
+                <option key={index} value={movie.title} />
+              ))}
+            </datalist>
+          </div>
+
+          {[
             { label: 'Release Date', name: 'releaseDate', type: 'date' },
+            { label: 'Time', name: 'time', type: 'time' },
             { label: 'Movie Image URL', name: 'movieImage', type: 'text' },
             { label: 'Ticket Price', name: 'ticketPrice', type: 'number' },
-            { label: 'Language', name: 'language', type: 'text' },
-            { label: 'Movie Type', name: 'movieType', type: 'text' }
+            { label: 'Language', name: 'language', type: 'text' }
           ].map((field) => (
             <div className="mov-form-group" key={field.name}>
               <label className="mov-label">{field.label}:</label>
@@ -69,7 +115,6 @@ const MovieForm = () => {
             </div>
           ))}
 
-          {/* City Dropdown */}
           <div className="mov-form-group">
             <label className="mov-label">City:</label>
             <select
@@ -81,14 +126,13 @@ const MovieForm = () => {
             >
               <option value="">Select City</option>
               <option value="Hyderabad">Hyderabad</option>
-              <option value="Banglore">Banglore</option>
+              <option value="Bangalore">Bangalore</option>
               <option value="Chennai">Chennai</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Pune">Pune</option>
             </select>
           </div>
 
-          {/* Theatre Dropdown */}
           <div className="mov-form-group">
             <label className="mov-label">Theatre:</label>
             <select
@@ -99,10 +143,10 @@ const MovieForm = () => {
               required
             >
               <option value="">Select Theatre</option>
-              <option value="Theatre 1">PVR</option>
-              <option value="Theatre 2">AAA</option>
-              <option value="Theatre 3">CINEPOLIS</option>
-              <option value="Theatre 4">ARJUN</option>
+              <option value="PVR">PVR</option>
+              <option value="AAA">AAA</option>
+              <option value="CINEPOLIS">CINEPOLIS</option>
+              <option value="ARJUN">ARJUN</option>
             </select>
           </div>
 
