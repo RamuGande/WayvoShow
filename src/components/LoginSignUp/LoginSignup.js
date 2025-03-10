@@ -2,26 +2,22 @@ import React, { useState } from "react";
 import { User2, ArrowRight } from "lucide-react";
 import "./LoginSignup.css";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 function LoginSignup() {
   const [activeTab, setActiveTab] = useState("login");
 
   // Login state
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
-
-  // Signup state
   const [signUpName, setSignUpName] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [signUpConfirmPassword, setSignUpConfirmPassword] = useState("");
-
-  // Add these state variables at the beginning of your component
   const [loginError, setLoginError] = useState("");
   const [signupError, setSignupError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState("");
   const [signupSuccess, setSignupSuccess] = useState("");
-
+  const navigate = useNavigate();
   const login = (e) => {
     e.preventDefault();
     setLoginError("");
@@ -32,19 +28,19 @@ function LoginSignup() {
       setLoginError("Please fill in all fields");
       return;
     }
-
     axios
       .post(`${process.env.REACT_APP_API_URL}/login`, { username, password })
       .then((response) => {
         setLoginSuccess("Login successful!");
-        console.log(response.data);
-        // Handle successful login (e.g., redirect, store token, etc.)
+        sessionStorage.setItem("token",response.data)
+        sessionStorage.setItem("user",username);
+        navigate("/");
       })
       .catch((error) => {
         if (error.response) {
           setLoginError(
             error.response.data.message ||
-              "User not registered. Please sign up first."
+              "Check ur Credentials"
           );
         } else {
           setLoginError("An error occurred. Please try again.");
