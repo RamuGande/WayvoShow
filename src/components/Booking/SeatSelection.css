@@ -1,0 +1,117 @@
+/* SeatSelection.css */
+.booking-form {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  h3 {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .screen {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .seating-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+  }
+  
+  .seat {
+    position: relative;
+    margin: 5px;
+  }
+  
+  .seat input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .seat span {
+    display: inline-block;
+    padding: 10px;
+    background-color: #dcdcdc;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .seat input:checked + span {
+    background-color: skyblue;
+    color: white;
+  }
+  
+  .seat input:disabled + span {
+    background-color: #f44336;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  .seat:hover span {
+    background-color: #e0e0e0;
+  }
+  
+  .confirm-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: green;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirm-button:disabled {
+    background-color: #9e9e9e;
+    cursor: not-allowed;
+  }
+  
+  .confirm-button:hover {
+    background-color: green;
+  }
+  
+  @media (max-width: 768px) {
+    .booking-form {
+      width: 95%;
+    }
+  
+    .seating-grid {
+      flex-direction: column;
+    }
+  
+    .row {
+      flex-direction: column;
+    }
+  }
+  

@@ -1,163 +1,238 @@
+/* General Page Styling */
+body {
+  background-color: #f7f7f7; /* Light background color for the whole page */
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .moviedetails_container {
-  max-width: 1200px;
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 8px;
+  padding: 20px;
+  background: linear-gradient(135deg, skyblue 0%, #e9eff5 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px skyblue;
   display: flex;
-  }
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 20px;
+  min-height: 40vh;
+  flex-wrap: wrap;
+  overflow: hidden;
   
-  .movie-info {
-    display: flex;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.movie-image {
+  width: 100%;
+  max-width: 350px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details h1 {
+  font-size: 1.5rem;
+  color: #2e3b4e;
+  font-weight: 700;
+  margin: 0;
+}
+
+.details p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #ffb700;
+}
+
+.rating svg {
+  color: #ffdf00;
+}
+
+/* Date Picker Section */
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 15px 20px; /* Reduced padding to make the container smaller */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px; /* Reduced the max width */
+  margin-top: 20px;
+  margin-left: 300px;
+  height: 120px;
+  
+}
+
+.date-picker label {
+  font-size: 1.3rem;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.date-picker input[type="date"] {
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background-color: white;
+  width: 100%;
+  max-width: 250px; /* Reduced max width */
+  transition: border-color 0.3s ease-in-out;
+}
+
+.date-picker input[type="date"]:hover {
+  border-color: #00baf2;
+}
+
+.date-picker input[type="date"]:focus {
+  border-color: #00baf2;
+}
+
+/* Show Cards Section */
+.shows-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px; /* Adjusted width to fit */
+  margin-top: 40px; /* Space below date picker */
+  margin-top: 70px;
+  margin-left: 0px;
+  
+}
+
+.show-card {
+  background-color: skyblue;
+  padding: 10px;
+  margin-left: 0px;
+  width: 170px;
+  height: 180px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.show-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.show-card .theatre {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.show-card .show-time {
+  font-size: 1.4rem;
+  color: #00baf2;
+  font-weight: bold;
+}
+
+.show-card .show-time span {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 5px;
+  color: #777;
+}
+
+/* No Shows Available */
+.shows-container .no-shows {
+  text-align: center;
+  color: red;
+  font-size: 1.3rem;
+  margin: 20px;
+}
+
+
+/* button {
+  background-color: #00baf2;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 250px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+} */
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .moviedetails_container {
+    padding: 20px 10px;
     flex-direction: column;
-    gap: 30px;
-    padding: 10px;
-  }
-  
-  .movie-image {
-    width: 300px;
-    height: 450px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .details h1 {
-    
-    margin-bottom: 10px;
-    color: #1a1a1a;
-  }
-  
-  .details p {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .rating {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.2rem;
-    color: #1a1a1a;
-  }
-  .booking-form {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  .form-group select,
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  .seat-selection {
-    margin-top: 30px;
-  }
-  
-  .seat-selection h3 {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .screen {
-    background: #e0e0e0;
-    height: 30px;
-    margin-bottom: 40px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .seating-grid {
-    display: flex;
+  .movie-info {
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 30px;
+    gap: 20px;
+    max-width: 100%;
   }
-  
-  .row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .seat {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .seat input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  .seat span {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .seat input:checked + span {
-    color: #fff;
-  }
-  
-  .seat input:checked {
-    background: #4a90e2;
-  }
-  
-  .seat input:checked + span {
-    color: #fff;
-  }
-  
-  .seat input:checked ~ .seat {
-    background: #00baf2;
-    border-color: #00baf2;
-  }
-  
-  .confirm-button {
+
+  .shows-container {
+    flex-direction: column;
+    gap: 20px;
     width: 100%;
-    padding: 12px;
-    background: #00baf2;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
   }
-  
-  .confirm-button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
+
+  .show-card {
+    width: 100%;
+    height: auto;
   }
-  
-  .confirm-button:not(:disabled):hover {
-    background: #357abd;
+
+  .show-card .theatre {
+    font-size: 1.2rem;
   }
+
+  .show-card .show-time {
+    font-size: 1.3rem;
+  }
+
+  .date-picker {
+    max-width: 100%;
+  }
+}
+

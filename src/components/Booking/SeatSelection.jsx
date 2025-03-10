@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Star } from 'lucide-react';
 import { useParams } from 'react-router-dom';
+import './SeatSelection.css';
 
 const SeatSelection = () => {
     const [selectedSeats, setSelectedSeats] = useState([]);

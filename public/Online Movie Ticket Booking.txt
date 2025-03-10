@@ -1,0 +1,153 @@
+Online Movie Ticket Booking App - Documentation
+1. Overview
+The Online Movie Ticket Booking App is a web-based platform that allows users to browse movies, check showtimes, select seats, make bookings, and proceed with payment. The app includes several features such as user authentication (login/sign-up), private theater booking, and an easy-to-use interface for selecting movies and shows.
+
+This document outlines the functional requirements, technical specifications, and implementation details for the app, including the frontend and backend components.
+
+2. Functional Requirements
+2.1 Home Page
+Description: The homepage provides an interface for users to navigate the platform. It includes:
+Single Slider for Ads: A carousel that displays promotional advertisements.
+Multi-Slider for Movies: A carousel that shows available movies. Clicking on any movie redirects users to the movie details page.
+2.2 Movie Detail Page
+Description: When a user clicks on a movie in the multi-slider, they are redirected to the movie details page. The page includes:
+Movie Details: Title, genre, duration, director, cast, and a description.
+Select Date: A date picker allowing the user to select a show date.
+Available Shows: After a date is selected, the system will display available showtimes for that date.
+Select Showtime: The user selects a showtime which will redirect them to the seat selection page.
+2.3 Seat Selection Page
+Description: After selecting a showtime, users will be directed to the seat selection page, where they can:
+View the theater's seating layout, with available and occupied seats.
+Select seats for booking.
+2.4 Booking Confirmation & Payment
+Description: After selecting seats, users will proceed to the payment page:
+Booking Confirmation: Users confirm their seat selection and proceed to payment.
+Payment Gateway Integration: Users can complete the payment process through third-party services like Stripe, Razorpay, or PayPal.
+2.5 User Authentication
+Description:
+Sign-Up: Users can register an account with email, password, and personal details (name, phone number, etc.).
+Login: Registered users can log in using their email and password.
+JWT Authentication: The system uses JSON Web Tokens (JWT) for secure authentication and session management.
+2.6 Profile Page
+Description: The profile page allows users to:
+View their personal information.
+View their past movie bookings.
+Edit their profile information if needed.
+2.7 Contact Us Page
+Description: The contact page displays a form where users can submit inquiries or feedback. The form includes fields for:
+Name
+Email
+Subject
+Message
+Submitting the form sends the message to the system administrator.
+2.8 Private Booking
+Description: Users can book private theaters for special occasions. The private booking process includes:
+Choosing a movie and selecting a showtime.
+Selecting the number of seats and other private booking options (e.g., food and beverages).
+3. Technical Specifications
+3.1 Frontend
+The frontend of the app is built using React.js with the following components and features:
+
+React Router: For navigation between pages (Home, Movie Details, Booking, etc.).
+React Slick: For implementing both single and multi-sliders (for ads and movie listings).
+React Datepicker: For selecting dates for movie bookings.
+Formik/React Hook Form: For handling user authentication (sign-up and login forms) and the contact form.
+Axios: For making API calls to interact with the backend.
+3.2 Backend
+The backend is built using Django and Django REST Framework for handling API requests. The backend also includes JWT authentication and payment gateway integration.
+
+JWT Authentication: Secure user login and registration using JSON Web Tokens (JWT).
+Django Models: For managing data related to users, movies, bookings, and contact forms.
+Payment Integration: Integration with payment gateways like Stripe, Razorpay, or PayPal for ticket payment processing.
+Email Notifications: For confirming bookings and sending user-related notifications.
+4. Database Models
+4.1 User Model
+We will extend Django's default User model to include additional fields like profile_picture, phone_number, etc. The User model will be used for authentication and managing user-specific information.
+
+4.2 Movie Model
+The Movie Model represents the movies available for booking and contains the following fields:
+
+title (CharField): The name of the movie.
+genre (CharField): The genre of the movie.
+duration (IntegerField): The duration of the movie in minutes.
+director (CharField): The director of the movie.
+cast (TextField): The cast of the movie.
+description (TextField): A brief description of the movie.
+image_url (URLField): URL for the movie poster or image.
+4.3 Booking Model
+The Booking Model keeps track of movie ticket bookings. It includes:
+
+user (ForeignKey to User): The user who made the booking.
+movie (ForeignKey to Movie): The movie that is being booked.
+showtime (DateTimeField): The showtime selected by the user.
+seats_selected (IntegerField): The number of seats selected.
+total_price (DecimalField): The total cost of the booking.
+4.4 Contact Form Model
+The Contact Form Model is used to store user inquiries. It contains:
+
+name (CharField): The name of the user.
+email (EmailField): The email address of the user.
+subject (CharField): The subject of the inquiry.
+message (TextField): The message or inquiry from the user.
+5. API Endpoints
+5.1 User Authentication
+POST /api/auth/signup/: Registers a new user.
+POST /api/auth/login/: Authenticates a user and returns a JWT token.
+5.2 Movie Information
+GET /api/movies/: Retrieves a list of all available movies.
+GET /api/movies/{id}/: Retrieves detailed information for a specific movie.
+5.3 Booking
+GET /api/bookings/: Retrieves the list of bookings for the authenticated user.
+POST /api/bookings/: Allows users to create a booking by selecting a movie, date, time, and seats.
+5.4 Contact Us
+POST /api/contact/: Submits a contact form with the user's name, email, subject, and message.
+6. Frontend Structure
+The React frontend is organized into the following components:
+
+cpp
+Copy
+/src
+  /components
+    /Home
+    /MovieDetail
+    /Login
+    /SignUp
+    /Profile
+    /ContactUs
+    /Booking
+  /services
+    api.js  // Axios functions for making backend API calls
+  /App.js  // Main app entry point
+  /index.js // Entry point for React
+7. Security Considerations
+JWT Storage: Store JWT tokens securely in HttpOnly cookies or localStorage, depending on your preference and security requirements.
+HTTPS: Use HTTPS for all communication between the frontend and backend to prevent man-in-the-middle attacks.
+Input Validation & Sanitization: Ensure that all inputs (e.g., user registration forms, booking details) are properly validated and sanitized to prevent SQL injection, XSS, and other security threats.
+8. Testing
+8.1 Unit Testing
+Unit tests should be written for:
+
+Models (User, Movie, Booking)
+API endpoints (user authentication, movie data retrieval, booking creation)
+React components (form submissions, movie selection, seat layout)
+8.2 Integration Testing
+Integration tests should verify the flow of the app, ensuring that:
+
+Movie data is correctly fetched and displayed.
+Users can successfully book tickets, select seats, and complete payments.
+8.3 End-to-End Testing
+End-to-end tests should simulate the entire user journey from:
+
+Logging in or signing up.
+Selecting a movie.
+Making a booking.
+Completing a payment.
+9. Deployment
+For deployment, you can:
+
+Frontend: Deploy the React app to platforms like Vercel, Netlify, or a custom server.
+Backend: Deploy the Django app to platforms like Heroku, AWS, or DigitalOcean.
+Make sure to set up the following for production:
+
+Use a production-grade database (e.g., PostgreSQL or MySQL).
+Configure environment variables for secret keys, API tokens, and credentials.
