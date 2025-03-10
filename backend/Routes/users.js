@@ -13,7 +13,8 @@ const Seats = require("./Seats")
 app.use("/seats", Seats)
 const vendorRouter = require('./Vendors');
 app.use('/Vendors', vendorRouter);
-const Theater = require("./Theater_Generation")
+const Theater = require("./Theater_Generation");
+const { Navigate } = require('react-router-dom');
 app.use("/Theater_generation", Theater)
     // Helper function to execute database queries
 const execute_query = async(query, params) => {
@@ -41,6 +42,7 @@ app.post('/login', async(req, res) => {
         if (!isMatch) return res.status(401).send("Check your username or password");
         const token = Auth.createToken(username, password, role);
         res.status(200).send(token);
+
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal server error");

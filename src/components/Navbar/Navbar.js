@@ -1,10 +1,21 @@
-import React from "react";
-import { Search, LogOut } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Search, LogOut, LogIn } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = () => {
+  const [user,setuser]=useState('')
+  useEffect(()=>{
+    setuser(sessionStorage.getItem("user"));
+   
+  })
+  
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.setItem("user", "");
+    window.location.reload();
+  };
 
   const handleLogin = () => {
     navigate('/log');
@@ -15,7 +26,7 @@ const Navbar = () => {
       <div className="navbar-1">
         <div className="first_container">
           <div className="logo">
-          <img style={{height:'250px', width:'300px'}}  src={require('../../assets/images/mainlogo.png')} alt="img" />
+            <img style={{ height: '250px', width: '300px' }} src={require('../../assets/images/mainlogo.png')} alt="img" />
           </div>
           <div className="first_sub_container">
             <div className="search_and_input">
@@ -26,10 +37,17 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
-            <button onClick={handleLogin}>
-              <LogOut className="h-4 w-4" />
-              <span>Login</span>
-            </button>
+            {user ? (
+              <button onClick={handleLogout}>
+                <LogOut className="h-4 w-4" />
+                <span>Logout</span>
+              </button>
+            ) : (
+              <button onClick={handleLogin}>
+                <LogIn className="h-4 w-4" />
+                <span>Login</span>
+              </button>
+            )}
           </div>
         </div>
         <div className="border-t">
