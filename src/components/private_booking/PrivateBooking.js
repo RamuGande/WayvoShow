@@ -73,7 +73,7 @@ const PrivateBooking = () => {
         </div>
         
         <div className="booking-content">
-          <form className="booking-form" onSubmit={handleSubmit}>
+          <form className="booking-forms" onSubmit={handleSubmit}>
             <div className="form-group">
               <label>
                 <Users className="form-icon" />

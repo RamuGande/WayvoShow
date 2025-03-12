@@ -3,9 +3,12 @@
     /* max-width: 1200px; */
     margin: 0 auto;
     background: linear-gradient(to bottom right, #eef2ff, #e0f2fe);
+    height: fit-content;
+
+  }
+  .list{
     height: 100vh;
   }
-  
   .admin-header {
     display: flex;
     justify-content: space-between;
