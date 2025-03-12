@@ -28,7 +28,8 @@ const execute_query = async(query, params) => {
 
 app.post('/login', async(req, res) => {
     const { username, password } = req.body;
-    const query = "SELECT username, password,user_type FROM user WHERE Email = ?";
+    const query = "SELECT username, password,user_type FROM user WHERE Email= ?";
+
     try {
         const results = await execute_query(query, [username]);
         console.log(results)

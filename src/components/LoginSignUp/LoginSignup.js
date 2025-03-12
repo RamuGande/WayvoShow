@@ -3,6 +3,7 @@ import { User2, ArrowRight } from "lucide-react";
 import "./LoginSignup.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 function LoginSignup() {
   const [activeTab, setActiveTab] = useState("login");
 
