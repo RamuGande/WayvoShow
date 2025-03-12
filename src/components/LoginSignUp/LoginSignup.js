@@ -80,7 +80,7 @@ function LoginSignup() {
       .then((response) => {
         setSignupSuccess("Registration successful! Please login.");
         console.log(response.data);
-        // Clear form fields
+      
         setSignUpName("");
         setSignUpEmail("");
         setSignUpPassword("");
@@ -89,7 +89,7 @@ function LoginSignup() {
       .catch((error) => {
         if (error.response) {
           setSignupError(
-            error.response.data.message || "User already exists. Please login."
+            error.response.data
           );
         } else {
           setSignupError("An error occurred. Please try again.");

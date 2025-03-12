@@ -22,7 +22,7 @@ const MovieDetails = () => {
 
     const fetchShows = (date) => {
         if (movie && date) {
-            fetch(`http://localhost:5000/Theater_Generation/shows?movie_name=${movie.title}&date=${date}&time=19:00:00`)
+            fetch(`http://localhost:5000/Theater_Generation/shows?movie_name=${movie.title}&date=${date}`)
                 .then(response => response.json())
                 .then(data => {
                     // Check if data is an array, otherwise default to an empty array
