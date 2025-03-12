@@ -15,14 +15,23 @@ const MovieForm = () => {
 
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
-
   useEffect(() => {
         fetch('/movies2.json')
             .then(response => response.json())
             .then(data => setMovies(data.movies))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
-
+  const fetch_theater=()=>{
+    axios.get(`${process.env.REACT_APP_API_URL}/vendors/fetch_details`,{username,location},{
+      Authorization :{
+        Bearer:'Token'
+      }
+    }).then(response=>response.json()).then(data=>setTheater(data.theater)).catch(eror=>console.error('Error Fetching data:',error));
+  }
+  const handle_loc_change=(e)=>{
+     setLocationValue(e.target.value);
+     fetch_theater();
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({

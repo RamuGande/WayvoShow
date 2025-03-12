@@ -28,13 +28,11 @@ const execute_query = async(query, params) => {
 
 app.post('/login', async(req, res) => {
     const { username, password } = req.body;
-    const query = "SELECT username, password,user_type FROM user WHERE username = ?";
-
+    const query = "SELECT username, password,user_type FROM user WHERE Email = ?";
     try {
         const results = await execute_query(query, [username]);
-
+        console.log(results)
         if (results.length === 0) return res.status(401).send("Check your username or password");
-
         const hashedPassword = results[0].password;
         const role = results[0].user_type
         const isMatch = await bcrypt.compare(password, hashedPassword);
@@ -59,6 +57,7 @@ app.post('/signup_user', async(req, res) => {
 
     try {
         const existingUser = await execute_query("SELECT username FROM user WHERE username = ?", [username]);
+        console.log(existingUser)
         if (existingUser.length > 0) return res.status(409).send("Username already exists");
 
         const existingEmail = await execute_query("SELECT email FROM user WHERE email = ?", [email]);

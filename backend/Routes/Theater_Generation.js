@@ -44,10 +44,10 @@ Theater.post('/add-show', async(req, res) => {
     }
 });
 Theater.get('/shows', async(req, res) => {
-    const { movie_name, date, time } = req.query;
+    const { movie_name, date } = req.query;
     console.log(movie_name)
     console.log(date);
-    if (!movie_name || !date || !time) {
+    if (!movie_name || !date) {
         return res.status(400).json({ message: 'Movie name, date, and time are required' });
     }
     const query = `

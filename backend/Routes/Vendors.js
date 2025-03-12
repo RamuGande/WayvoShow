@@ -14,8 +14,8 @@ const execute_query = async(query, params) => {
 
 // Route to add a new show
 vendorRouter.post('/add_Show', async(req, res) => {
-    const { movie_name, show_date, image, price, language, type, location, theater_id, show_time } = req.body;
-
+    const { movie_name, show_date, show_time, Image, price, location, theater_id } = req.body;
+    console.log(req.body)
     if (!theater_id || !movie_name || !show_date || !show_time) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
@@ -28,12 +28,13 @@ vendorRouter.post('/add_Show', async(req, res) => {
             movie_name,
             show_date,
             show_time,
-            price,
+            location,
+            price
 
         };
 
         const result = await execute_query('INSERT INTO show_table SET ?', newShow);
-        res.status(201).json({ message: 'Show added successfully', show_id });
+        res.status(200).json({ message: 'Show added successfully', show_id });
     } catch (error) {
         console.error('Error adding show:', error);
         res.status(500).json({ error: 'Internal server error' });
